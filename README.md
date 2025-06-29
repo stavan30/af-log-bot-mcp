@@ -18,6 +18,22 @@ This project simulates real-time Artifactory logs and allows querying them throu
 4. Start the Streamlit chatbot interface  
    `streamlit run chatbot_ui.py`
 
+## Using Docker
+
+To build and run the project using Docker:
+
+1. Build the Docker image
+
+   docker build -t artifactory-log-bot .
+
+2. Run the container
+
+   docker run -p 8000:8000 -p 8501:8501 artifactory-log-bot
+
+The MCP API will be available at http://localhost:8000  
+The Streamlit UI will be available at http://localhost:8501
+
+
 ## STEP1: MCP Server Setup
 
 Created a FastAPI server with a /query endpoint.  
