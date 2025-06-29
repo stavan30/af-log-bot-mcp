@@ -24,7 +24,10 @@ def search_logs(username=None, resp_code=None, keyword=None, last_n_minutes=10):
         if username:
             df = df[df["username"].str.lower() == username.lower()]
         if resp_code:
-            df = df[df["resp_code"] == resp_code]
+            if isinstance(resp_code, list):
+                df = df[df["resp_code"].isin(resp_code)]
+            else:
+                df = df[df["resp_code"] == resp_code]            
         if keyword:
             keyword = keyword.lower()
             df = df[df.apply(lambda row: keyword in str(row.to_string()).lower(), axis=1)]

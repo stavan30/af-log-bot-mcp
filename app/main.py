@@ -1,13 +1,13 @@
 from fastapi import FastAPI, Query
 from pydantic import BaseModel
-from typing import Optional, List
+from typing import Optional, List, Union
 from app.log_parser import search_logs
 
 app = FastAPI()
 
 class QueryRequest(BaseModel):
     username: Optional[str] = None
-    resp_code: Optional[int] = None
+    resp_code: Optional[Union[int, List[int]]] = None
     keyword: Optional[str] = None
     last_n_minutes: Optional[int] = 10
 

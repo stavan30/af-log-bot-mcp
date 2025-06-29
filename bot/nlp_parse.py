@@ -11,9 +11,10 @@ def extract_filters_from_query(query: str):
         filters["username"] = user_match.group()
 
     # Response code (match 3-digit numbers starting with 4 or 5)
-    resp_match = re.search(r"\b(4\d{2}|5\d{2})\b", query)
-    if resp_match:
-        filters["resp_code"] = int(resp_match.group())
+    resp_matches = re.findall(r"\b([1-5]\d{2})\b", query)
+    if resp_matches:
+        filters["resp_code"] = [int(code) for code in resp_matches]
+
 
     # Keyword: pick a known word like "manifest", "helm", "docker"
     for keyword in ["manifest", "docker", "helm", "image", "token", "artifact"]:
