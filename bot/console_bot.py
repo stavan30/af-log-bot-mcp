@@ -1,8 +1,10 @@
 import requests
+from nlp_parse import extract_filters_from_query
+
 
 API_URL = "http://localhost:8000/query"
 
-def get_user_input():
+def get_manual_input():
     print("\nEnter filter values (leave blank to skip):")
     username = input("Username: ").strip() or None
     resp_code_input = input("Response Code (e.g. 404): ").strip()
@@ -18,6 +20,12 @@ def get_user_input():
         "last_n_minutes": last_n_minutes
     }
 
+def get_nlp_input():
+    query = input("\nAsk your log query: ").strip()
+    filters = extract_filters_from_query(query)
+    print(f"\nExtracted filters: {filters}")
+    return filters
+
 def pretty_print_results(results):
     if not results:
         print("\nNo matching logs found.\n")
@@ -31,10 +39,19 @@ def pretty_print_results(results):
 
 def main():
     print("Artifactory Log Query Bot (CLI)")
+
     while True:
-        user_query = get_user_input()
+        mode = input("\nChoose mode: [1] Manual filters  [2] Natural language  > ").strip()
+        if mode == "1":
+            payload = get_manual_input()
+        elif mode == "2":
+            payload = get_nlp_input()
+        else:
+            print("Invalid option. Try again.")
+            continue
+
         try:
-            response = requests.post(API_URL, json=user_query)
+            response = requests.post(API_URL, json=payload)
             if response.status_code == 200:
                 pretty_print_results(response.json().get("results", []))
             else:
