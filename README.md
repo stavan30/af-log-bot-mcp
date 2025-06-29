@@ -60,6 +60,7 @@ Created a web interface using Streamlit.
 Supports both manual filters and natural language queries.  
 Connects to the MCP server and displays logs in a chat-like view.
 
+# RESULTS
 
 ## MANUAL ENTRY
 <img width="1503" alt="Screenshot 2025-06-29 at 1 19 48 AM" src="https://github.com/user-attachments/assets/c2586808-1aac-4eed-b9a7-205ba1a7ce92" />
