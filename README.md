@@ -59,3 +59,12 @@ Integrated into the CLI bot so users can ask questions like:
 Created a web interface using Streamlit.  
 Supports both manual filters and natural language queries.  
 Connects to the MCP server and displays logs in a chat-like view.
+
+
+## MANUAL ENTRY
+<img width="1503" alt="Screenshot 2025-06-29 at 1 19 48 AM" src="https://github.com/user-attachments/assets/c2586808-1aac-4eed-b9a7-205ba1a7ce92" />
+
+## NATURAL LANGUAGE
+<img width="1506" alt="Screenshot 2025-06-29 at 1 39 46 AM" src="https://github.com/user-attachments/assets/ab993a55-0567-4d24-94ed-b0103a12980e" />
+
+
